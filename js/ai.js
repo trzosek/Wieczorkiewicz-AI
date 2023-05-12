@@ -2,6 +2,7 @@ const CLIENT_TOKEN = "MYA6XFIQFHPFBABLW65WOGIUEW2BB4RP";
 const auth = "Bearer " + CLIENT_TOKEN;
 const button = document.querySelector("#button");
 const container = document.querySelector("#container");
+
 const odpowiedzi = {
   przywitanie: [
     "Dzień dobry! Jestem Twój chatbot - Wieczorkiewicz AI. Czego potrzebujesz?",
@@ -15,6 +16,8 @@ const odpowiedzi = {
   ],
   about: [
     "Jestem chatbotem o nazwie Wieczorkiewicz AI. Potrafię przywitać się użytkownika oraz odpowiedzieć na pytania typu jak ci mija dzień. Dodatkowo, oferuję funkcjonalność wykonywania prostych działań matematycznych, takich jak dodawanie, odejmowanie, mnożenie i dzielenie",
+    "Witaj! Jestem Chatbot Wieczorkiewicz AI. Moim zadaniem jest prowadzenie rozmów i pomaganie użytkownikom w rozwiązywaniu prostych zadań matematycznych. Możesz pytać mnie o różne rzeczy, a ja postaram się na nie odpowiedzieć.",
+    "Witaj! Jestem Chatbot Wieczorkiewicz AI. Jako program komputerowy, potrafię prowadzić rozmowy z użytkownikami i odpowiadać na różnego rodzaju pytania. Posiadam również umiejętności w rozwiązywaniu prostych zadań matematycznych.",
   ],
   blad: [
     "To pytanie wydaje się być poza moim zakresem. Przepraszam, jeśli nie mogę dostarczyć ci pożądanej odpowiedzi.",
@@ -29,8 +32,7 @@ const odpowiedzi = {
 //funkcje
 const message = (typ, tresc) => {
   const div = document.createElement("div");
-  div.innerHTML =
-    "<div class='chatbot-message " + typ + "'>" + tresc + "</div>";
+  div.innerHTML = "<div class='message " + typ + "'>" + tresc + "</div>";
   container.appendChild(div);
 };
 button.onclick = () => {
@@ -68,5 +70,6 @@ button.onclick = () => {
         }.${year}`;
         message("incoming", formattedDate);
       }
+      container.scrollTop = container.scrollHeight;
     });
 };
